@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react'
 import TodoList from "./TodoList"
 import { v4 as uuidv4} from 'uuid'
 
+// https://www.youtube.com/watch?v=hQAHSlTtcmY
+
 function App() {
 	const [todos, setTodos] = useState([])
 	const todoNameRef = useRef()
