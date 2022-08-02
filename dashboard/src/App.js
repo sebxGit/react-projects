@@ -8,7 +8,7 @@ import './App.css'
 import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, Line} from './pages'
 
 const App = () => {
-	const activeMenu = false;
+	const activeMenu = true;
 
 	return (
 		<div>
