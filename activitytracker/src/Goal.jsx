@@ -1,33 +1,30 @@
 import React from 'react'
 import { useState } from 'react';
 import './Goal.css'
-
-const ShowBox = (props) => {
-	if (props.show)
-		return (<h5>input: {props.name} - {props.hrs}</h5>)
-}
+import Module from './Module';
 
 const Goal = () => {
 	const [name, setName] = useState("");
 	const [hrs, setHrs] = useState("");
-	const [show, setShow] = useState(false);
 
-	const toggleShow = () => {
-		setShow(current => !current);
+	const handleSubmit = e => {
+		e.preventDefault();
+		const goals = document.getElementsByName("goals");
+		goals.render(<Module name="newGoal"/>)
 	}
 
 	return (
-		<form>
-			<label>goal <input type="text" value={name} onChange={(e) => setName(e.target.value)}/></label>
-			<label>hrs/wk <input type="text" value={hrs} onChange={(e) => setHrs(e.target.value)}/></label>
-			
-			<i class="arrow down" onClick={e => {
-				toggleShow(); 
-				e.target.className = (e.target.className === "arrow down") ? "arrow up" : "arrow down";
-				}}></i>
-				
-			<ShowBox name={name} hrs={hrs} show={show}/>
-			
+		<form onSubmit={handleSubmit}>
+			<label>goal 
+				<input type="text" value={name} required onChange={(e) => setName(e.target.value)}
+				class="shadow border rounded py-2 px-2 text-gray-700 h-10 m-2"/>
+			</label>
+			<label>hrs/wk 
+				<input type="number" value={hrs} required onWheel={(e) => e.target.blur()} onChange={(e) => setHrs(e.target.value)}
+				class="shadow border rounded py-2 px-2 text-gray-700 h-10 w-10 m-2"/>
+			</label>
+			<button class="shadow border rounded py-2 px-2 bg-amber-500">Button</button>
+			<input type="submit" hidden />
 		</form>
 	)
 }
